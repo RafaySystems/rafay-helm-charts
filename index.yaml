@@ -1,6 +1,20 @@
 apiVersion: v1
 entries:
   rafay-datadog:
+  - annotations:
+      catagory: LogManagement
+    apiVersion: v2
+    appVersion: "2.0"
+    created: "2022-10-18T00:17:21.755616991Z"
+    description: Aggregate and stream your organization's audit logs to DataDog
+    digest: 792e91839a71c6fdde2625ec7c234758add9715632fefba642008e730bf54482
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-datadog
+    icon: https://rafay.co/wp-content/uploads/2022/10/rafay-logo-only-transparent-1.png
+    name: rafay-datadog
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-datadog-2/rafay-datadog-2.tgz
+    version: "2"
   - apiVersion: v2
     appVersion: "2"
     created: "2022-05-04T07:29:42.316044664Z"
@@ -12,6 +26,20 @@ entries:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-datadog-0.2.0/rafay-datadog-0.2.0.tgz
     version: 0.2.0
   rafay-splunk:
+  - annotations:
+      catagory: LogManagement
+    apiVersion: v2
+    appVersion: "3.0"
+    created: "2022-10-18T00:17:21.875290306Z"
+    description: Aggregate and stream your organization's audit logs to Splunk
+    digest: 9fc7dfe03f3bb4b613379a844faabeec51a70e2fed17f612387ca5d90269e358
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-splunk
+    icon: https://rafay.co/wp-content/uploads/2022/10/rafay-logo-only-transparent-1.png
+    name: rafay-splunk
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-3/rafay-splunk-3.tgz
+    version: "3"
   - apiVersion: v2
     appVersion: "3"
     created: "2022-05-04T07:29:42.478986393Z"
@@ -22,4 +50,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-0.3.0/rafay-splunk-0.3.0.tgz
     version: 0.3.0
-generated: "2022-05-04T07:29:42.478992193Z"
+generated: "2022-10-18T00:17:21.875327806Z"
