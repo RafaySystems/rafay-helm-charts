@@ -1,5 +1,4 @@
-
-## Introduction
+## Overview
 
 This chart allows Rafay’s Kubernetes Operation platform audit logs to be sent to Splunk so that security operations teams can perform forensics and analytics in a standardized manner.
 
