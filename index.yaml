@@ -1,5 +1,20 @@
 apiVersion: v1
 entries:
+  rafay-cloudwatch:
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "3.0"
+    created: "2022-10-18T15:58:29.441101129Z"
+    description: Aggregate and stream your organization's audit logs to AWS CloudWatch
+    digest: 634e5d03ed6b180002654903a99c18fc74d06da6eeeb3e5ec28a42dddc8db72b
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-cloudwatch
+    icon: https://rafay.co/wp-content/uploads/2022/10/rafay-logo-only-transparent-1.png
+    name: rafay-cloudwatch
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-cloudwatch-3.0/rafay-cloudwatch-3.0.tgz
+    version: "3.0"
   rafay-datadog:
   - annotations:
       catagory: LogManagement
@@ -50,4 +65,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-0.3.0/rafay-splunk-0.3.0.tgz
     version: 0.3.0
-generated: "2022-10-18T00:17:21.875327806Z"
+generated: "2022-10-18T15:58:29.72885622Z"
