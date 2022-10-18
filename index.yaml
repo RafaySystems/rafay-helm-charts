@@ -28,7 +28,7 @@ entries:
     name: rafay-datadog
     type: application
     urls:
-    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-datadog-2/rafay-datadog-2.tgz
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-datadog-2.0/rafay-datadog-2.0.tgz
     version: "2.0"
   - apiVersion: v2
     appVersion: "2"
@@ -53,7 +53,7 @@ entries:
     name: rafay-splunk
     type: application
     urls:
-    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-3/rafay-splunk-3.tgz
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-3.0/rafay-splunk-3.0.tgz
     version: "3.0"
   - apiVersion: v2
     appVersion: "3"
