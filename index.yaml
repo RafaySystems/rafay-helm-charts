@@ -17,7 +17,7 @@ entries:
     version: "3.0"
   rafay-datadog:
   - annotations:
-      catagory: LogManagement
+      category: LogManagement
     apiVersion: v2
     appVersion: "2.0"
     created: "2022-10-18T00:17:21.755616991Z"
@@ -42,7 +42,7 @@ entries:
     version: 0.2.0
   rafay-splunk:
   - annotations:
-      catagory: LogManagement
+      category: LogManagement
     apiVersion: v2
     appVersion: "3.0"
     created: "2022-10-18T00:17:21.875290306Z"
