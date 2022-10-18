@@ -1,0 +1,10 @@
+annotations:
+  category: LogManagement
+apiVersion: v2
+appVersion: "3.0"
+description: Aggregate and stream your organization's audit logs to AWS CloudWatch
+name: rafay-cloudwatch
+type: application
+version: "3.0"
+home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-cloudwatch
+icon: https://rafay.co/wp-content/uploads/2022/10/rafay-logo-only-transparent-1.png
