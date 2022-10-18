@@ -29,7 +29,7 @@ entries:
     type: application
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-datadog-2/rafay-datadog-2.tgz
-    version: "2"
+    version: "2.0"
   - apiVersion: v2
     appVersion: "2"
     created: "2022-05-04T07:29:42.316044664Z"
@@ -54,7 +54,7 @@ entries:
     type: application
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-3/rafay-splunk-3.tgz
-    version: "3"
+    version: "3.0"
   - apiVersion: v2
     appVersion: "3"
     created: "2022-05-04T07:29:42.478986393Z"
