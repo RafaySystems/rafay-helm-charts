@@ -5,6 +5,20 @@ entries:
       category: LogManagement
     apiVersion: v2
     appVersion: "3.0"
+    created: "2023-01-26T22:41:49.073417537Z"
+    description: Aggregate and stream your organization's audit logs to AWS CloudWatch
+    digest: 0204774d66b06e2f4846bcb6a853f1c056f09698c0a3784db4a8a03187dfaf02
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-cloudwatch
+    icon: https://rafay.co/wp-content/uploads/2021/10/Rafay_Positive_Ver2x.png
+    name: rafay-cloudwatch
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-cloudwatch-3.2/rafay-cloudwatch-3.2.tgz
+    version: "3.2"
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "3.0"
     created: "2023-01-26T22:02:30.893104402Z"
     description: Aggregate and stream your organization's audit logs to AWS CloudWatch
     digest: d27face978c3d788e85bb8999b6620d14f1267810dc72e925564b9c21b062548
@@ -30,6 +44,20 @@ entries:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-cloudwatch-3.0/rafay-cloudwatch-3.0.tgz
     version: "3.0"
   rafay-datadog:
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "2.0"
+    created: "2023-01-26T22:41:49.280653623Z"
+    description: Aggregate and stream your organization's audit logs to DataDog
+    digest: f7197ebe29200ebf94bc2962edf8a428848f29fea31f01befb99d83d1a0e7aab
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-datadog
+    icon: https://rafay.co/wp-content/uploads/2021/10/Rafay_Positive_Ver2x.png
+    name: rafay-datadog
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-datadog-2.2/rafay-datadog-2.2.tgz
+    version: "2.2"
   - annotations:
       category: LogManagement
     apiVersion: v2
@@ -73,6 +101,20 @@ entries:
       category: LogManagement
     apiVersion: v2
     appVersion: "3.0"
+    created: "2023-01-26T22:41:49.60328978Z"
+    description: Aggregate and stream your organization's audit logs to Splunk
+    digest: f6403ae8029b2770a4a8c97632c51ebc6ed4897ebd49e38b4a1b89cf0385495b
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-splunk
+    icon: https://rafay.co/wp-content/uploads/2021/10/Rafay_Positive_Ver2x.png
+    name: rafay-splunk
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-3.2/rafay-splunk-3.2.tgz
+    version: "3.2"
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "3.0"
     created: "2023-01-26T22:02:31.164177711Z"
     description: Aggregate and stream your organization's audit logs to Splunk
     digest: c7e1ce813471593e7e8010bd52030ec0835cf44ceb40c451329be08d4b6324c5
@@ -107,4 +149,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-0.3.0/rafay-splunk-0.3.0.tgz
     version: 0.3.0
-generated: "2023-01-26T22:02:31.164199211Z"
+generated: "2023-01-26T22:41:49.60332878Z"
