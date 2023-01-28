@@ -1,0 +1,10 @@
+annotations:
+  category: ClusterManagement
+apiVersion: v2
+name: v2-infra
+description: A Helm chart for Rafay Operator
+type: application
+version: 1.0
+appVersion: "1.22.0"
+home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/v2-infra
+icon: https://rafay.co/wp-content/uploads/2021/10/Rafay_Positive_Ver2x.png

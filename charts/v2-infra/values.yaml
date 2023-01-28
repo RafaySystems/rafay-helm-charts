@@ -1,0 +1,24 @@
+global:
+  Rafay: {}
+
+connector:
+  image:
+    repository: registry.rafay-edge.net/rafay/rafay-connector
+    pullPolicy: IfNotPresent
+    tag: r1.22.0-1
+
+controller:
+  image:
+    repository: registry.rafay-edge.net/rafay/cluster-controller
+    pullPolicy: IfNotPresent
+    tag: r1.22.0-1
+
+token: ""
+api_addr: api.rafay.dev.
+control_addr: control.rafay.dev.
+allow_insecure_bootstrap: ""
+http_proxy: ""
+https_proxy: ""
+no_proxy: ""
+proxy_auth: ""
+openshift: false

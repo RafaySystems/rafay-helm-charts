@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    meta.helm.sh/release-name: v2-infra
+    meta.helm.sh/release-namespace: rafay-system
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: rafay-connector-v3
+  namespace: rafay-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rafay-connector-v3
+  template:
+    metadata:
+      labels:
+        app: rafay-connector-v3
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/os
+                operator: In
+                values:
+                - linux
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+                - arm64
+      containers:
+      - env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: DRIFT_SVC_ENDPOINT
+          value: :22281
+        - name: HEALTH_ENDPOINT
+          value: :22280
+        - name: HTTP_PROXY
+          valueFrom:
+            configMapKeyRef:
+              key: httpProxy
+              name: proxy-config-v3
+              optional: true
+        - name: HTTPS_PROXY
+          valueFrom:
+            configMapKeyRef:
+              key: httpsProxy
+              name: proxy-config-v3
+              optional: true
+        - name: NO_PROXY
+          valueFrom:
+            configMapKeyRef:
+              key: noProxy
+              name: proxy-config-v3
+              optional: true
+        - name: BOOTSTRAP_CA_CERT
+          valueFrom:
+            configMapKeyRef:
+              key: bootstrapCA
+              name: proxy-config-v3
+              optional: true
+        - name: ALLOW_INSECURE_BOOTSTRAP
+          valueFrom:
+            configMapKeyRef:
+              key: allowInsecureBootstrap
+              name: proxy-config-v3
+              optional: true
+        - name: Proxy-Authorization
+          valueFrom:
+            configMapKeyRef:
+              key: proxyAuth
+              name: proxy-config-v3
+              optional: true
+        image: "{{ .Values.connector.image.repository }}:{{ .Values.connector.image.tag}}"
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: 22280
+            scheme: HTTP
+          initialDelaySeconds: 90
+          periodSeconds: 30
+          timeoutSeconds: 10
+        name: connector
+        volumeMounts:
+        - mountPath: /etc/config
+          name: connector-config-v3
+      priorityClassName: rafay-cluster-critical
+      serviceAccountName: system-sa
+      terminationGracePeriodSeconds: 10
+      volumes:
+      - configMap:
+          name: connector-config-v3
+        name: connector-config-v3
