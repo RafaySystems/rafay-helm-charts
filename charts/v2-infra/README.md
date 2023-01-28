@@ -23,5 +23,4 @@ helm install v2-infra  rafay-helm-charts/v2-infra --set token=$TOKEN --set api_a
 
 ```
 
-!!! Note
-    Release name should be v2-infra so that Rafay can take over of managing the release.
+Note: Release name should be v2-infra so that Rafay can take over of managing the release.
