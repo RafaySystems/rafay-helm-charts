@@ -149,4 +149,19 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-0.3.0/rafay-splunk-0.3.0.tgz
     version: 0.3.0
-generated: "2023-01-26T22:41:49.60332878Z"
+  v2-infra:
+  - annotations:
+      category: ClusterManagement
+    apiVersion: v2
+    appVersion: 1.22.0
+    created: "2023-01-28T02:44:38.475864048Z"
+    description: A Helm chart for Rafay Operator
+    digest: 24dafff56abea0c86d656f9d9a58b132acd57a7111d17a8369b36a080e45e116
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/v2-infra
+    icon: https://rafay.co/wp-content/uploads/2021/10/Rafay_Positive_Ver2x.png
+    name: v2-infra
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
+    version: "1"
+generated: "2023-01-28T02:44:38.47589065Z"
