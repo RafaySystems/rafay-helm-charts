@@ -1,5 +1,27 @@
 apiVersion: v1
 entries:
+  karpenter:
+  - apiVersion: v2
+    appVersion: 0.23.0
+    created: "2023-02-08T22:29:53.288648205Z"
+    description: A Helm chart for Karpenter, an open-source node provisioning project
+      built for Kubernetes.
+    digest: 134ad84820e79fe3e6b6786268c20e19e092a10ea266d64ba4421cf88e118218
+    home: https://karpenter.sh/
+    icon: https://repository-images.githubusercontent.com/278480393/dab059c8-caa1-4b55-aaa7-3d30e47a5616
+    keywords:
+    - cluster
+    - node
+    - scheduler
+    - autoscaling
+    - lifecycle
+    name: karpenter
+    sources:
+    - https://github.com/aws/karpenter/
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/karpenter-v0.23.0/karpenter-v0.23.0.tgz
+    version: v0.23.0
   rafay-cloudwatch:
   - annotations:
       category: LogManagement
@@ -164,4 +186,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2023-01-28T02:44:38.47589065Z"
+generated: "2023-02-08T22:29:53.288706105Z"
