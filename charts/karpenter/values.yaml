@@ -20,6 +20,8 @@ serviceAccount:
   name: ""
   # -- Additional annotations for the ServiceAccount.
   annotations: {}
+# -- Specifies additional rules for the core ClusterRole.
+additionalClusterRoleRules: []
 serviceMonitor:
   # -- Specifies whether a ServiceMonitor should be created.
   enabled: false
@@ -70,6 +72,15 @@ affinity:
         - matchExpressions:
             - key: karpenter.sh/provisioner-name
               operator: DoesNotExist
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+            - key: app.kubernetes.io/instance
+              operator: In
+              values:
+                - "{{ .Release.Name }}"
+        topologyKey: "kubernetes.io/hostname"
 # -- topologySpreadConstraints to increase the controller resilience
 topologySpreadConstraints:
   - maxSkew: 1
@@ -90,24 +101,46 @@ extraVolumes: []
 #         expirationSeconds: 86400
 #         path: token
 
+# -- Array of extra K8s manifests to deploy
+extraObjects: []
+#- apiVersion: karpenter.k8s.aws/v1alpha1
+#  kind: AWSNodeTemplate
+#  metadata:
+#    name: default
+#  spec:
+#    subnetSelector:
+#      karpenter.sh/discovery: {CLUSTER_NAME}
+#    securityGroupSelector:
+#      karpenter.sh/discovery: {CLUSTER_NAME}
+
 controller:
-  # -- Controller image.
-  image: "public.ecr.aws/karpenter/controller:v0.23.0@sha256:40aea3b25a33ff2cb44bdecf0417a2642e2a785b4fd30067634ef8f1bd48383c"
+  image:
+    # -- Repository path to the controller image.
+    repository: public.ecr.aws/karpenter/controller
+    # -- Tag of the controller image.
+    tag: v0.27.0
+    # -- SHA256 digest of the controller image.
+    digest: sha256:db45f56bf4730b77a38e39f097edce4ddba899b83981511bc0f227ba270d744e
   # -- SecurityContext for the controller container.
   securityContext: {}
   # -- Additional environment variables for the controller pod.
   env: []
   # - name: AWS_REGION
   #   value: eu-west-1
-
+  envFrom: []
   # -- Resources for the controller pod.
-  resources:
-    requests:
-      cpu: 1
-      memory: 1Gi
-    limits:
-      cpu: 1
-      memory: 1Gi
+  resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  #  requests:
+  #    cpu: 1
+  #    memory: 1Gi
+  #  limits:
+  #    cpu: 1
+  #    memory: 1Gi
+
   # -- Controller outputPaths - default to stdout only
   outputPaths:
     - stdout
@@ -123,8 +156,16 @@ controller:
   # - name: aws-iam-token
   #   mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
   #   readOnly: true
-  # -- Additional sideCarContainer config - this will also inherit volume mounts from deployment
-  sidecarContainer: {}
+  # -- Additional sidecarContainer config
+  sidecarContainer: []
+  # -- Additional volumeMounts for the sidecar - this will be added to the volume mounts on top of extraVolumeMounts
+  sidecarVolumeMounts: []
+  metrics:
+    # -- The container port to use for metrics.
+    port: 8080
+  healthProbe:
+    # -- The container port to use for http health probe.
+    port: 8081
 webhook:
   logLevel: error
   # -- The container port to use for the webhook.
@@ -146,7 +187,7 @@ settings:
   aws:
     # -- Cluster name.
     clusterName: ""
-    # -- Cluster endpoint.
+    # -- Cluster endpoint. If not set, will be discovered during startup (EKS only)
     clusterEndpoint: ""
     # -- The default instance profile to use when launching nodes
     defaultInstanceProfile: ""
@@ -162,8 +203,15 @@ settings:
     nodeNameConvention: "ip-name"
     # -- The VM memory overhead as a percent that will be subtracted from the total memory for all instance types
     vmMemoryOverheadPercent: 0.075
-    # -- interruptionQueueName is currently in ALPHA and is disabled by default. Enabling interruption handling may
+    # -- interruptionQueueName is disabled if not specified. Enabling interruption handling may
     # require additional permissions on the controller service account. Additional permissions are outlined in the docs.
     interruptionQueueName: ""
-    # -- The global tags to use on all AWS infrastructure resources (launch templates, instances, SQS queue, etc.)
+    # -- The global tags to use on all AWS infrastructure resources (launch templates, instances, etc.) across node templates
     tags:
+  # -- Feature Gate configuration values. Feature Gates will follow the same graduation process and requirements as feature gates
+  # in Kubernetes. More information here https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/#feature-gates-for-alpha-or-beta-features
+  featureGates:
+    # -- driftEnabled is in ALPHA and is disabled by default.
+    # Setting driftEnabled to true enables the drift deprovisioner to watch for drift between currently deployed nodes
+    # and the desired state of nodes set in provisioners and node templates
+    driftEnabled: false
