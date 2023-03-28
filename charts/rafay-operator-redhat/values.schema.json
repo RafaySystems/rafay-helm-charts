@@ -1,0 +1,260 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "global",
+        "connector",
+        "controller",
+        "token",
+        "api_addr",
+        "control_addr",
+        "allow_insecure_bootstrap",
+        "http_proxy",
+        "https_proxy",
+        "no_proxy",
+        "proxy_auth",
+        "openshift"
+    ],
+    "properties": {
+        "global": {
+            "type": "object",
+            "default": {},
+            "title": "The global Schema",
+            "required": [
+                "Rafay"
+            ],
+            "properties": {
+                "Rafay": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The Rafay Schema",
+                    "required": [],
+                    "properties": {},
+                    "examples": [{}]
+                }
+            },
+            "examples": [{
+                "Rafay": {}
+            }]
+        },
+        "connector": {
+            "type": "object",
+            "default": {},
+            "title": "The connector Schema",
+            "required": [
+                "image"
+            ],
+            "properties": {
+                "image": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The image Schema",
+                    "required": [
+                        "repository",
+                        "pullPolicy",
+                        "tag"
+                    ],
+                    "properties": {
+                        "repository": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The repository Schema",
+                            "examples": [
+                                "registry.rafay-edge.net/rafay/rafay-connector-redhat"
+                            ]
+                        },
+                        "pullPolicy": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The pullPolicy Schema",
+                            "examples": [
+                                "IfNotPresent"
+                            ]
+                        },
+                        "tag": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The tag Schema",
+                            "examples": [
+                                "r1.22.1"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "repository": "registry.rafay-edge.net/rafay/rafay-connector-redhat",
+                        "pullPolicy": "IfNotPresent",
+                        "tag": "r1.22.1"
+                    }]
+                }
+            },
+            "examples": [{
+                "image": {
+                    "repository": "registry.rafay-edge.net/rafay/rafay-connector-redhat",
+                    "pullPolicy": "IfNotPresent",
+                    "tag": "r1.22.1"
+                }
+            }]
+        },
+        "controller": {
+            "type": "object",
+            "default": {},
+            "title": "The controller Schema",
+            "required": [
+                "image"
+            ],
+            "properties": {
+                "image": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The image Schema",
+                    "required": [
+                        "repository",
+                        "pullPolicy",
+                        "tag"
+                    ],
+                    "properties": {
+                        "repository": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The repository Schema",
+                            "examples": [
+                                "registry.rafay-edge.net/rafay/cluster-controller-redhat"
+                            ]
+                        },
+                        "pullPolicy": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The pullPolicy Schema",
+                            "examples": [
+                                "IfNotPresent"
+                            ]
+                        },
+                        "tag": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The tag Schema",
+                            "examples": [
+                                "r1.22.1"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "repository": "registry.rafay-edge.net/rafay/cluster-controller-redhat",
+                        "pullPolicy": "IfNotPresent",
+                        "tag": "r1.22.1"
+                    }]
+                }
+            },
+            "examples": [{
+                "image": {
+                    "repository": "registry.rafay-edge.net/rafay/cluster-controller-redhat",
+                    "pullPolicy": "IfNotPresent",
+                    "tag": "r1.22.1"
+                }
+            }]
+        },
+        "token": {
+            "type": "string",
+            "default": "",
+            "title": "The token Schema",
+            "examples": [
+                "ced2s9c0fga0i1d6sruf0"
+            ]
+        },
+        "api_addr": {
+            "type": "string",
+            "default": "",
+            "title": "The api_addr Schema",
+            "examples": [
+                "api.rafay.dev"
+            ]
+        },
+        "control_addr": {
+            "type": "string",
+            "default": "",
+            "title": "The control_addr Schema",
+            "examples": [
+                "control.rafay.dev"
+            ]
+        },
+        "allow_insecure_bootstrap": {
+            "type": "string",
+            "default": "",
+            "title": "The allow_insecure_bootstrap Schema",
+            "examples": [
+                ""
+            ]
+        },
+        "http_proxy": {
+            "type": "string",
+            "default": "",
+            "title": "The http_proxy Schema",
+            "examples": [
+                ""
+            ]
+        },
+        "https_proxy": {
+            "type": "string",
+            "default": "",
+            "title": "The https_proxy Schema",
+            "examples": [
+                ""
+            ]
+        },
+        "no_proxy": {
+            "type": "string",
+            "default": "",
+            "title": "The no_proxy Schema",
+            "examples": [
+                ""
+            ]
+        },
+        "proxy_auth": {
+            "type": "string",
+            "default": "",
+            "title": "The proxy_auth Schema",
+            "examples": [
+                ""
+            ]
+        },
+        "openshift": {
+            "type": "boolean",
+            "default": false,
+            "title": "The openshift Schema",
+            "examples": [
+                false
+            ]
+        }
+    },
+    "examples": [{
+        "global": {
+            "Rafay": {}
+        },
+        "connector": {
+            "image": {
+                "repository": "registry.rafay-edge.net/rafay/rafay-connector-redhat",
+                "pullPolicy": "IfNotPresent",
+                "tag": "r1.22.1"
+            }
+        },
+        "controller": {
+            "image": {
+                "repository": "registry.rafay-edge.net/rafay/cluster-controller-redhat",
+                "pullPolicy": "IfNotPresent",
+                "tag": "r1.22.1"
+            }
+        },
+        "token": "ced2s9c0fga0i1d6sruf0",
+        "api_addr": "api.rafay.dev",
+        "control_addr": "control.rafay.dev",
+        "allow_insecure_bootstrap": "",
+        "http_proxy": "",
+        "https_proxy": "",
+        "no_proxy": "",
+        "proxy_auth": "",
+        "openshift": false
+    }]
+}
