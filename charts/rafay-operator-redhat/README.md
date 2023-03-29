@@ -13,6 +13,9 @@ helm repo update
 
 helm search repo rafay-helm-charts
 
+# Apply the CRDs
+kubectl apply -f https://raw.githubusercontent.com/RafaySystems/rafay-helm-charts/main/charts/rafay-operator-redhat/crds-backup/crds.yaml
+
 export BOOTSTRAP_FILE=<location of the downloaded bootstrap file>
 
 TOKEN=`cat $BOOTSTRAP_FILE |yq '.data.token | select(document_index == 15)'`
