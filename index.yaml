@@ -144,6 +144,19 @@ entries:
       charts.openshift.io/name: rafay-operator-redhat
     apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-03-29T03:26:52.137875729Z"
+    description: A Helm chart for Kubernetes
+    digest: fff15d14a1546115d27fa4ec911c079e3f82d378f3bb2d780ebdaee17077fc15
+    kubeVersion: '>= 1.20.0-0'
+    name: rafay-operator-redhat
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-operator-redhat-0.2.1/rafay-operator-redhat-0.2.1.tgz
+    version: 0.2.1
+  - annotations:
+      charts.openshift.io/name: rafay-operator-redhat
+    apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-03-29T01:52:06.175357021Z"
     description: A Helm chart for Kubernetes
     digest: 65a61b118b88f9efdefcec48cb102d8f750a47d6ebd3aead2b842a33db8960ad
@@ -221,4 +234,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2023-03-29T01:52:06.175393424Z"
+generated: "2023-03-29T03:26:52.138231328Z"
