@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ .Release.Name }}-test"
+  namespace: rafay-system 
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+    - name: kubectl
+      image: registry.rafay-edge.net/rafay/rafay-kubectl:1.2
+      command:
+        - /bin/sh
+        - -c
+        - |
+          echo "Checking for rafay pods"
+          pods=`/kubectl get po -n rafay-system|grep connector`
+          [ $? -ne 1 ] && echo -e " !! rafay pods are running !! Exiting  " && exit 0
+          echo "Rafay pods are not running" && exit 1
+  restartPolicy: Never
+

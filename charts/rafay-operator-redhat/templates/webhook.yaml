@@ -1,0 +1,34 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  annotations:
+    meta.helm.sh/release-name: v2-infra
+    meta.helm.sh/release-namespace: rafay-system
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: rafay-drift-validate-v3
+webhooks:
+- admissionReviewVersions:
+  - v1
+  - v1beta1
+  clientConfig:
+    caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNCVENDQWF5Z0F3SUJBZ0lVZHA0OFF6TVVLQWFDc3lJM0hZL0ZUbXB4ekZrd0NnWUlLb1pJemowRUF3SXcKWVRFTE1Ba0dBMVVFQmhNQ1ZWTXhDekFKQmdOVkJBZ1RBa05CTVJJd0VBWURWUVFIRXdsVGRXNXVlWFpoYkdVeApGakFVQmdOVkJBb1REVkpoWm1GNUlGTjVjM1JsYlhNeEdUQVhCZ05WQkFNTUVGSmhabUY1WDFkbFltaHZiMnRmClEwRXdIaGNOTWpBeE1URTVNREl4TlRBd1doY05NalV4TVRFNE1ESXhOVEF3V2pCaE1Rc3dDUVlEVlFRR0V3SlYKVXpFTE1Ba0dBMVVFQ0JNQ1EwRXhFakFRQmdOVkJBY1RDVk4xYm01NWRtRnNaVEVXTUJRR0ExVUVDaE1OVW1GbQpZWGtnVTNsemRHVnRjekVaTUJjR0ExVUVBd3dRVW1GbVlYbGZWMlZpYUc5dmExOURRVEJaTUJNR0J5cUdTTTQ5CkFnRUdDQ3FHU000OUF3RUhBMElBQkJKZFBxK0ZhWTB6K1BMU1hsbmc5cEFXWXUyaDZYeGlsUnhjaGZIVHpHU1QKZjR5NkZTdkZNMGd4ZlAvV080bmJwOUJzS3ViTnBMYkllUHpPYkluOVRmMmpRakJBTUE0R0ExVWREd0VCL3dRRQpBd0lCQmpBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJSd25qck1SYVRjTHpUNWoxaE51VUJjCnBoQTIzakFLQmdncWhrak9QUVFEQWdOSEFEQkVBaUFsMVlobXhsQlM5cmZBOWhwdFhUMGUyb2hUajFrOHVjbXQKaHFjVzBsUDgzUUlnUVhlUUU1RUJQWUkwU05ETzZsUk5PS20wQjBUbFFUbEtwR1RpMmhXdmNZbz0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+    service:
+      name: rafay-drift-v3
+      namespace: rafay-system
+      path: /drifthandler
+      port: 8081
+  failurePolicy: Ignore
+  name: rafay.drift.validate
+  rules:
+  - apiGroups:
+    - '*'
+    apiVersions:
+    - '*'
+    operations:
+    - '*'
+    resources:
+    - '*/*'
+    scope: '*'
+  sideEffects: None
+  timeoutSeconds: 1

@@ -1,0 +1,32 @@
+apiVersion: v1
+data:
+  apiAddr: {{ .Values.api_addr }} 
+  controlAddr: {{ .Values.control_addr }}
+  token: {{ .Values.token }}
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: v2-infra
+    meta.helm.sh/release-namespace: rafay-system
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: connector-config-v3
+  namespace: rafay-system
+---
+apiVersion: v1
+data:
+  allowInsecureBootstrap: {{ if .Values.allow_insecure_bootstrap }} {{ else }}  "" {{ end }}
+  bootstrapCA: {{ if .Values.bootstrap_ca }} {{ else }}  "" {{ end }}
+  httpProxy: {{ if .Values.http_proxy }} {{ else }}  "" {{ end }}
+  httpsProxy: {{ if .Values.https_proxy }} {{ else }}  "" {{ end }}
+  noProxy: {{ if .Values.no_proxy }} {{ else }}  "" {{ end }}
+  proxyAuth: {{ if .Values.proxy_auth }} {{ else }}  "" {{ end }}
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: v2-infra
+    meta.helm.sh/release-namespace: rafay-system
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: proxy-config-v3
+  namespace: rafay-system
