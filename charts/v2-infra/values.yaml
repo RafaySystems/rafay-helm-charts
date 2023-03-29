@@ -19,6 +19,13 @@ relay:
     repository: registry.rafay-edge.net/rafay/rafay-relay
     pullPolicy: IfNotPresent
     tag: master-35
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
 
 initContainer:
   image:
@@ -30,6 +37,9 @@ token: ""
 api_addr: api.rafay.dev.
 control_addr: control.rafay.dev.
 allow_insecure_bootstrap: ""
+cluster_id: ""
+max_dials: "2"
+relays: ""
 http_proxy: ""
 https_proxy: ""
 no_proxy: ""

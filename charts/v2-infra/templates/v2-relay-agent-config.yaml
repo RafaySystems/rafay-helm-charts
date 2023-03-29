@@ -1,1 +1,14 @@
-{{ .Values.relayAgentConfigMap }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: v2-infra
+    meta.helm.sh/release-namespace: rafay-system
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: v2-relay-agent-config
+  namespace: rafay-system
+data:
+  clusterID: {{ .Values.cluster_id }}
+  maxDials: {{ .Values.max_dials }}
+  relays: {{ .Values.relays }}
