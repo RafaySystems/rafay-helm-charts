@@ -1,5 +1,6 @@
 global:
-  Rafay: {}
+  Rafay:
+    ClusterLabels: {}
 
 connector:
   image:
@@ -12,6 +13,18 @@ controller:
     repository: registry.rafay-edge.net/rafay/cluster-controller
     pullPolicy: IfNotPresent
     tag: r1.22.0-1
+
+relay:
+  image:
+    repository: registry.rafay-edge.net/rafay/rafay-relay
+    pullPolicy: IfNotPresent
+    tag: master-35
+
+initContainer:
+  image:
+    repository: registry.dev.rafay-edge.net/rafay/busybox
+    pullPolicy: IfNotPresent
+    tag: 1.33
 
 token: ""
 api_addr: api.rafay.dev.
