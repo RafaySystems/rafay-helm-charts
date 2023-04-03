@@ -5,7 +5,6 @@ appVersion: "2.0"
 description: Aggregate and stream your organization's audit logs to DataDog
 name: rafay-datadog
 type: application
-version: "2.2"
+version: "2.3"
 home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-datadog
 icon: https://rafay.co/wp-content/uploads/2021/10/Rafay_Positive_Ver2x.png
-
