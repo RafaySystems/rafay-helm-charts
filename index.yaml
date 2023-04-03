@@ -91,6 +91,20 @@ entries:
       category: LogManagement
     apiVersion: v2
     appVersion: "2.0"
+    created: "2023-04-03T18:46:06.423285401Z"
+    description: Aggregate and stream your organization's audit logs to DataDog
+    digest: a1f36cab78e9de6565dffdcc32b97a73dfa858d0bacdf0424e18e91fa30a65ee
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-datadog
+    icon: https://rafay.co/wp-content/uploads/2021/10/Rafay_Positive_Ver2x.png
+    name: rafay-datadog
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-datadog-2.3/rafay-datadog-2.3.tgz
+    version: "2.3"
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "2.0"
     created: "2023-01-26T22:41:49.280653623Z"
     description: Aggregate and stream your organization's audit logs to DataDog
     digest: f7197ebe29200ebf94bc2962edf8a428848f29fea31f01befb99d83d1a0e7aab
@@ -171,6 +185,20 @@ entries:
       category: LogManagement
     apiVersion: v2
     appVersion: "3.0"
+    created: "2023-04-03T18:46:06.600567842Z"
+    description: Aggregate and stream your organization's audit logs to Splunk
+    digest: fe51e222ddbc630272b783a4e440b9064979659e7e43c3c8c6c4549f09d79c06
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-splunk
+    icon: https://rafay.co/wp-content/uploads/2021/10/Rafay_Positive_Ver2x.png
+    name: rafay-splunk
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-3.3/rafay-splunk-3.3.tgz
+    version: "3.3"
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "3.0"
     created: "2023-01-26T22:41:49.60328978Z"
     description: Aggregate and stream your organization's audit logs to Splunk
     digest: f6403ae8029b2770a4a8c97632c51ebc6ed4897ebd49e38b4a1b89cf0385495b
@@ -234,4 +262,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2023-03-29T03:26:52.138231328Z"
+generated: "2023-04-03T18:46:06.600944549Z"
