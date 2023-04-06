@@ -39,7 +39,7 @@ spec:
       terminationGracePeriodSeconds: 200
       initContainers:
         - name: set-limits
-          image: "{{ .Values.initContainer.repository }}:{{ .Values.initContainer.image.tag}}"
+          image: "{{ .Values.initContainer.image.repository }}:{{ .Values.initContainer.image.tag}}"
           imagePullPolicy: {{ .Values.initContainer.image.pullPolicy }}
           command: ["sh", "-c", "ulimit -n 65536"]
           securityContext:
