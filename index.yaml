@@ -251,6 +251,20 @@ entries:
   - annotations:
       category: ClusterManagement
     apiVersion: v2
+    appVersion: 1.24.0
+    created: "2023-04-30T18:53:53.455878369Z"
+    description: A Helm chart for Rafay Operator
+    digest: 4f71a7b783e791228b7ed0efa28e47e745efd1437f8f5947fa3b6babb957478e
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/v2-infra
+    icon: https://rafay.co/wp-content/uploads/2021/10/Rafay_Positive_Ver2x.png
+    name: v2-infra
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1.1/v2-infra-1.1.tgz
+    version: "1.1"
+  - annotations:
+      category: ClusterManagement
+    apiVersion: v2
     appVersion: 1.22.0
     created: "2023-01-28T02:44:38.475864048Z"
     description: A Helm chart for Rafay Operator
@@ -262,4 +276,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2023-04-03T18:46:06.600944549Z"
+generated: "2023-04-30T18:53:53.45590957Z"
