@@ -47,6 +47,6 @@ spec:
           requests:
             cpu: 250m
             memory: 128Mi
-      priorityClassName: rafay-cluster-critical
+      priorityClassName: rafay-cluster-critical-v3
       serviceAccountName: system-sa
       terminationGracePeriodSeconds: 10
