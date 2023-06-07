@@ -6,9 +6,9 @@ config:
   ## Rafay console URL
   url: https://console.rafay.dev
   ## Rafay API Key
-  apikey: RAFAY_API_KEY
+  rafay_api_key: RAFAY_API_KEY
   ## Rafay API Secret
-  apisecret: RAFAY_API_SECRET
+  rafay_api_secret: RAFAY_API_SECRET
   ## Send Initial logs to datadog based on following value. Default to "14d" days
   filter: 14d
   ## Time Interval to send logs to datadog
@@ -16,7 +16,7 @@ config:
   ## Datadog host
   host: http-intake.logs.datadoghq.com
   ## Datadog API KEY
-  datadogkey: DATADOG_API_KEY
+  datadog_api_key: DATADOG_API_KEY
   ## Existning Secret Name or leave it empty
   secret_name: ""
 image:

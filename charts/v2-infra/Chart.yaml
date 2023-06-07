@@ -4,7 +4,7 @@ apiVersion: v2
 name: v2-infra
 description: A Helm chart for Rafay Operator
 type: application
-version: "1.1.1"
+version: "1.1.2"
 appVersion: "1.24.0"
 home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/v2-infra
-icon: https://rafay.co/wp-content/uploads/2021/10/Rafay_Positive_Ver2x.png
+icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png

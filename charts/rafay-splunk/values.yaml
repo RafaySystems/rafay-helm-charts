@@ -6,9 +6,9 @@ config:
   ## Rafay console URL
   url: https://console.rafay.dev
   ## Rafay API Key
-  apikey: RAFAY_API_KEY
+  rafay_api_key: RAFAY_API_KEY
   ## Rafay API Secret
-  apisecret: RAFAY_API_SECRET
+  rafay_api_secret: RAFAY_API_SECRET
   ## Send Initial logs to splunk adog based on following value. Defaults to "14d" days
   filter: 14d
   ## Time Interval to send logs to splunk
@@ -18,7 +18,7 @@ config:
   ## Splunk Server Port
   port: 8088
   ## Splunk HEC Token
-  token: SPLUNK_TOKEN
+  splunk_token: SPLUNK_TOKEN
   ## Set to False for insecure splunk server
   ssl_verify: True
   ## Index name to store audit logs to

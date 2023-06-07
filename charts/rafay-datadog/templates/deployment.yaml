@@ -48,7 +48,7 @@ spec:
             {{- else }}
                 name: {{ .Release.Name }}-secret
             {{- end }}
-                key: apikey
+                key: rafaykey
           - name: RAFAY_API_SECRET
             valueFrom:
               secretKeyRef:
@@ -57,7 +57,7 @@ spec:
             {{- else }}
                 name: {{ .Release.Name }}-secret
             {{- end }}
-                key: apisecret
+                key: rafaysecret
           - name: DATADOG_API_KEY
             valueFrom:
               secretKeyRef:

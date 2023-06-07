@@ -7,4 +7,4 @@ name: rafay-splunk
 type: application
 version: "3.4"
 home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-splunk
-icon: https://rafay.co/wp-content/uploads/2021/10/Rafay_Positive_Ver2x.png
+icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
