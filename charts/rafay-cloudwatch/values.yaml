@@ -26,6 +26,8 @@ config:
   createLogStreams: True
   ## AWS Region
   aws_region: us-west-1
+  ## Existning Secret Name or leave it empty
+  secret_name: ""
 image:
   repository: registry.rafay-edge.net/rafay-logs/rafay-cloudwatch
   pullPolicy: Always

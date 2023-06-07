@@ -28,7 +28,11 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
+    {{- if .Values.serviceAccount.create }}
       serviceAccountName: {{ .Release.Name }}-serviceaccount
+    {{- else }}
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+    {{- end }}
       containers:
         - name: {{ .Release.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
