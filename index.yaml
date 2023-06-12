@@ -48,6 +48,20 @@ entries:
       category: LogManagement
     apiVersion: v2
     appVersion: "3.0"
+    created: "2023-06-12T19:08:43.27351062Z"
+    description: Aggregate and stream your organization's audit logs to AWS CloudWatch
+    digest: 0775ef44b9c4e3dcf21a536c5cee022ddbb2b1b60aa6271e1477d186c8f746a3
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-cloudwatch
+    icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
+    name: rafay-cloudwatch
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-cloudwatch-3.3/rafay-cloudwatch-3.3.tgz
+    version: "3.3"
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "3.0"
     created: "2023-01-26T22:41:49.073417537Z"
     description: Aggregate and stream your organization's audit logs to AWS CloudWatch
     digest: 0204774d66b06e2f4846bcb6a853f1c056f09698c0a3784db4a8a03187dfaf02
@@ -87,6 +101,20 @@ entries:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-cloudwatch-3.0/rafay-cloudwatch-3.0.tgz
     version: "3.0"
   rafay-datadog:
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "2.0"
+    created: "2023-06-12T19:08:43.470220712Z"
+    description: Aggregate and stream your organization's audit logs to DataDog
+    digest: 8e9ef5948680ccf9ce53e6580b749e6729d261c2bde77f91f1ea4c35a7afec21
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-datadog
+    icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
+    name: rafay-datadog
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-datadog-2.4/rafay-datadog-2.4.tgz
+    version: "2.4"
   - annotations:
       category: LogManagement
     apiVersion: v2
@@ -158,6 +186,21 @@ entries:
       charts.openshift.io/name: rafay-operator-redhat
     apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-06-12T19:08:43.617740105Z"
+    description: A Helm chart for Kubernetes
+    digest: 2715416a707dd2668255acae903be088e466f95d4e8f0b92f535d8b68d46aeaa
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-operator-redhat
+    icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
+    kubeVersion: '>= 1.20.0-0'
+    name: rafay-operator-redhat
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-operator-redhat-0.2.2/rafay-operator-redhat-0.2.2.tgz
+    version: 0.2.2
+  - annotations:
+      charts.openshift.io/name: rafay-operator-redhat
+    apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-03-29T03:26:52.137875729Z"
     description: A Helm chart for Kubernetes
     digest: fff15d14a1546115d27fa4ec911c079e3f82d378f3bb2d780ebdaee17077fc15
@@ -181,6 +224,20 @@ entries:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-operator-redhat-0.2.0/rafay-operator-redhat-0.2.0.tgz
     version: 0.2.0
   rafay-splunk:
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "3.0"
+    created: "2023-06-12T19:08:43.747008214Z"
+    description: Aggregate and stream your organization's audit logs to Splunk
+    digest: a878a60f54774e27c93b28f2fdd103baaf53e562afb555c5da41cb0bbab2ce05
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-splunk
+    icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
+    name: rafay-splunk
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-3.4/rafay-splunk-3.4.tgz
+    version: "3.4"
   - annotations:
       category: LogManagement
     apiVersion: v2
@@ -252,6 +309,20 @@ entries:
       category: ClusterManagement
     apiVersion: v2
     appVersion: 1.24.0
+    created: "2023-06-12T19:08:43.886513026Z"
+    description: A Helm chart for Rafay Operator
+    digest: 70728e10426c43a9c8e582803cc737a7eba47b537ebcc7e7da6b5d4ef37a92d8
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/v2-infra
+    icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
+    name: v2-infra
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1.1.2/v2-infra-1.1.2.tgz
+    version: 1.1.2
+  - annotations:
+      category: ClusterManagement
+    apiVersion: v2
+    appVersion: 1.24.0
     created: "2023-04-30T19:44:45.913387075Z"
     description: A Helm chart for Rafay Operator
     digest: a28bd5c75f6019f845e9461b6b892113ad61f9e86e9f3fa7907a50d3f491e134
@@ -290,4 +361,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2023-04-30T19:44:45.913500876Z"
+generated: "2023-06-12T19:08:43.886581827Z"
