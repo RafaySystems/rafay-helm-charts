@@ -7,7 +7,11 @@ metadata:
     {{- include "rafay-cloudwatch.labels" . | nindent 4 }}
 subjects:
   - kind: ServiceAccount
+  {{- if .Values.serviceAccount.create }}
     name: {{ .Release.Name }}-serviceaccount
+  {{- else }}
+    name: {{ .Values.serviceAccount.name }}
+  {{- end }}
     namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role

@@ -6,20 +6,24 @@ config:
   ## Rafay console URL
   url: https://console.rafay.dev
   ## Rafay API Key
-  apikey: RAFAY_API_KEY
-  ## Initial Logs
+  rafay_api_key: RAFAY_API_KEY
+  ## Rafay API Secret
+  rafay_api_secret: RAFAY_API_SECRET
+  ## Send Initial logs to datadog based on following value. Default to "14d" days
   filter: 14d
   ## Time Interval to send logs to datadog
   interval: 1m
   ## Datadog host
   host: http-intake.logs.datadoghq.com
   ## Datadog API KEY
-  datadogkey: DATADOG_API_KEY
+  datadog_api_key: DATADOG_API_KEY
+  ## Existning Secret Name or leave it empty
+  secret_name: ""
 image:
   repository: registry.rafay-edge.net/rafay-logs/rafay-datadog
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.2.3
+  tag: 0.2.4
 
 serviceAccount:
   # Specifies whether a service account should be created

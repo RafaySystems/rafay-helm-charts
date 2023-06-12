@@ -8,10 +8,8 @@ data:
   config.ini: |-
     [rafay]
     url = {{ .Values.config.url }}
-    apikey = {{ .Values.config.apikey }}
-    initialFilter = {{ .Values.config.filter }}
+    filter = {{ .Values.config.filter }}
     interval = {{ .Values.config.interval }}
     
     [Datadog]
     host = {{ .Values.config.host }}
-    apikey = {{ .Values.config.datadogkey }}

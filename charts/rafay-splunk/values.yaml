@@ -6,24 +6,30 @@ config:
   ## Rafay console URL
   url: https://console.rafay.dev
   ## Rafay API Key
-  apikey: examplerafayapikeyf6a881da3a0033495c81385d4
+  rafay_api_key: RAFAY_API_KEY
   ## Rafay API Secret
-  apisecret: examplerafayapisecret1da3a0033495c81385d4
+  rafay_api_secret: RAFAY_API_SECRET
+  ## Send Initial logs to splunk adog based on following value. Defaults to "14d" days
+  filter: 14d
+  ## Time Interval to send logs to splunk
+  interval: 1m
   ## Splunk Server Host
   host: splunkserver.mycompany.com
   ## Splunk Server Port
   port: 8088
   ## Splunk HEC Token
-  token: example-hec-token-8635-da5900e8a76c
+  splunk_token: SPLUNK_TOKEN
   ## Set to False for insecure splunk server
   ssl_verify: True
   ## Index name to store audit logs to
   index: k8s-cluster-audit
+  ## Existning Secret Name or leave it empty
+  secret_name: ""
 image:
   repository: registry.rafay-edge.net/rafay-logs/rafay-splunk
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.3.3
+  tag: 0.3.4
 serviceAccount:
   # Specifies whether a service account should be created
   create: true

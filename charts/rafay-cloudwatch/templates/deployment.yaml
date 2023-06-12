@@ -28,20 +28,42 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
+    {{- if .Values.serviceAccount.create }}
       serviceAccountName: {{ .Release.Name }}-serviceaccount
+    {{- else }}
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+    {{- end }}
       containers:
         - name: {{ .Release.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: AWS_DEFAULT_REGION
-              value: {{ .Values.config.aws_region }}
-            - name: RELEASE
-              value: {{ .Release.Name }}
-            - name: NS
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
+          - name: AWS_DEFAULT_REGION
+            value: {{ .Values.config.aws_region }}
+          - name: RELEASE
+            value: {{ .Release.Name }}
+          - name: NS
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: RAFAY_API_KEY
+            valueFrom:
+              secretKeyRef:
+            {{- if .Values.config.secret_name }}
+                name: {{ .Values.config.secret_name }}
+            {{- else }}
+                name: {{ .Release.Name }}-secret
+            {{- end }}
+                key: rafaykey
+          - name: RAFAY_API_SECRET
+            valueFrom:
+              secretKeyRef:
+            {{- if .Values.config.secret_name }}
+                name: {{ .Values.config.secret_name }}
+            {{- else }}
+                name: {{ .Release.Name }}-secret
+            {{- end }}
+                key: rafaysecret
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:

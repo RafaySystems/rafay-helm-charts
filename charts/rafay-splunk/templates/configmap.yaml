@@ -8,13 +8,11 @@ data:
   config.ini: |-
     [rafay]
     url = {{ .Values.config.url }}
-    apikey = {{ .Values.config.apikey }}
-    initial_filter = 30d
-    interval = 1m
+    filter = {{ .Values.config.filter }}
+    interval = {{ .Values.config.interval }}
     
     [Splunk]
     host = {{ .Values.config.host }}
     port = {{ .Values.config.port }}
-    token = {{ .Values.config.token }}
     ssl_verify = {{ .Values.config.ssl_verify }}
     index = {{ .Values.config.index }}

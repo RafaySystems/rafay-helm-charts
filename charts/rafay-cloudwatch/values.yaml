@@ -6,8 +6,11 @@ config:
   ## Rafay console URL
   url: https://console.rafay.dev
   ## Rafay API Key
-  apikey: RAFAY_API_KEY
-  ## Initial Logs
+  rafay_api_key: RAFAY_API_KEY
+  ## Rafay API Secret
+  rafay_api_secret: RAFAY_API_SECRET
+  ## Send Initial logs to CloudWatch based on following value. Default to "14d" days.
+  ## This value can not be greater than 14 days.
   filter: 14d
   ## Time Interval to send logs to cloudwatch
   interval: 1m
@@ -23,11 +26,13 @@ config:
   createLogStreams: True
   ## AWS Region
   aws_region: us-west-1
+  ## Existning Secret Name or leave it empty
+  secret_name: ""
 image:
   repository: registry.rafay-edge.net/rafay-logs/rafay-cloudwatch
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.3
+  tag: 0.3.3
 
 serviceAccount:
   # Specifies whether a service account should be created

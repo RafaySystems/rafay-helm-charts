@@ -8,7 +8,6 @@ data:
   config.ini: |-
     [rafay]
     url = {{ .Values.config.url }}
-    apikey = {{ .Values.config.apikey }}
     initialFilter = {{ .Values.config.filter }}
     interval = {{ .Values.config.interval }}
     
