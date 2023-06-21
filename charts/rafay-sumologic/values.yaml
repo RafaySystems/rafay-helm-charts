@@ -1,0 +1,57 @@
+# Default values for rafay sumologic audit log integration.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+config:
+  ## Rafay console URL
+  url: https://console.rafay.dev
+  ## Rafay API Key
+  rafay_api_key: RAFAY_API_KEY
+  ## Rafay API Secret
+  rafay_api_secret: RAFAY_API_SECRET
+  ## Send Initial logs to sumologic adog based on following value. Defaults to "14d" days
+  filter: 14d
+  ## Time Interval to send logs to sumologic
+  interval: 1m
+  ## sumologic endpoint (Without "/" & https)
+  endpoint: endpoint.collection.sumologic.com
+  ## sumologic UniqueHTTPCollectorCode
+  sumologic_token: SUMOLOGIC_TOKEN
+  ## Set to source name of ddddthe collector
+  ## Existing Secret Name or leave it empty
+  secret_name: ""
+image:
+  repository: registry.rafay-edge.net/rafay-logs/rafay-sumologic
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: 1.0.0
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+rbac:
+  create: true	
+replicaCount: 1
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+deploymentAnnotations: {}
+podAnnotations: {}
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+nodeSelector: {}
+tolerations: []
+affinity: {}

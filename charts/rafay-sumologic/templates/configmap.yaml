@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+  labels:
+    {{- include "rafay-sumologic.labels" . | nindent 4 }}
+data:
+  config.ini: |-
+    [rafay]
+    url = {{ .Values.config.url }}
+    filter = {{ .Values.config.filter }}
+    interval = {{ .Values.config.interval }}
+    
+    [sumologic]
+    host = {{ .Values.config.endpoint }}
