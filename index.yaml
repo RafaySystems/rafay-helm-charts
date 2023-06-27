@@ -304,6 +304,21 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-0.3.0/rafay-splunk-0.3.0.tgz
     version: 0.3.0
+  rafay-sumologic:
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "1.0"
+    created: "2023-06-27T18:15:19.334217632Z"
+    description: Aggregate and stream your organization's audit logs to sumologic
+    digest: 6f2585647a8dc33fb806c0a15b550f6c8e5844faf95cbacd7e2660f455f1ecdc
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-sumologic
+    icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
+    name: rafay-sumologic
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-sumologic-1.0/rafay-sumologic-1.0.tgz
+    version: "1.0"
   v2-infra:
   - annotations:
       category: ClusterManagement
@@ -361,4 +376,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2023-06-12T19:08:43.886581827Z"
+generated: "2023-06-27T18:15:19.334265834Z"
