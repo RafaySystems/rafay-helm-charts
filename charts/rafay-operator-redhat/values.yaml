@@ -33,7 +33,7 @@ relay:
 
 initContainer:
   image:
-    repository: registry.rafay-edge.net/rafay/ubi8-init
+    repository: registry.access.redhat.com/ubi8-init
     pullPolicy: IfNotPresent
     tag: 8.8-8
 
