@@ -10,19 +10,40 @@ connector:
     repository: registry.rafay-edge.net/rafay/rafay-connector-redhat 
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: r1.22.1
+    tag: r1.26.0-1
 
 controller:
   image:
     repository: registry.rafay-edge.net/rafay/cluster-controller-redhat
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: r1.22.1
+    tag: r1.26.0-1
+relay:
+  image:
+    repository: registry.rafay-edge.net/rafay/rafay-relay-agent-redhat
+    pullPolicy: IfNotPresent
+    tag: r1.26.0-1
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+initContainer:
+  image:
+    repository: registry.rafay-edge.net/rafay/ubi8-init
+    pullPolicy: IfNotPresent
+    tag: 8.8-8
 
 token: "ced2s9c0fga0i1d6sruf0"
 api_addr: api.rafay.dev 
 control_addr: control.rafay.dev
 allow_insecure_bootstrap: ""
+cluster_id: ""
+max_dials: "2"
+relays: ""
 http_proxy: ""
 https_proxy: ""
 no_proxy: ""
