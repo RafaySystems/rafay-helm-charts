@@ -18,9 +18,9 @@ kubectl apply -f https://raw.githubusercontent.com/RafaySystems/rafay-helm-chart
 
 export BOOTSTRAP_FILE=<location of the downloaded bootstrap file>
 
-TOKEN=`cat $BOOTSTRAP_FILE |yq '.data.token | select(document_index == 15)'`
-API_ADDR=`cat $BOOTSTRAP_FILE |yq '.data.apiAddr | select(document_index == 15)'`
-CONTROL_ADDR=`cat $BOOTSTRAP_FILE |yq '.data.controlAddr| select(document_index == 15)'`
+TOKEN=`cat $BOOTSTRAP_FILE |yq '.data.token | select(document_index == 18)'`
+API_ADDR=`cat $BOOTSTRAP_FILE |yq '.data.apiAddr | select(document_index == 18)'`
+CONTROL_ADDR=`cat $BOOTSTRAP_FILE |yq '.data.controlAddr| select(document_index == 18)'`
 CLUSTER_ID=`cat $BOOTSTRAP_FILE |yq '.data.clusterID| select(document_index == 13)'`
 RELAYS=`cat $BOOTSTRAP_FILE |yq '.data.relays| select(document_index == 13)'| sed 's/,/\\\\,/g'`
 
