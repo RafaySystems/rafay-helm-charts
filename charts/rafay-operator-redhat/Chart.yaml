@@ -6,6 +6,6 @@ description: A Helm chart for Kubernetes
 kubeVersion: '>= 1.20.0-0'
 name: rafay-operator-redhat
 type: application
-version: 0.2.2
+version: 0.2.3
 home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-operator-redhat
 icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
