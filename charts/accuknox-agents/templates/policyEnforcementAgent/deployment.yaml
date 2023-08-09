@@ -1,0 +1,52 @@
+{{- if eq (include "condition" .) "false" }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "policyEnforcementAgent.name" . }}
+  namespace: {{ .Values.namespace | default "accuknox-agents" }}
+  labels:
+    app: {{ include "policyEnforcementAgent.name" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "policyEnforcementAgent.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "policyEnforcementAgent.name" . }}
+    spec:
+      serviceAccountName: {{ include "policyEnforcementAgent.name" . }}
+      containers:
+      - name: {{ include "policyEnforcementAgent.name" . }}
+        image: "public.ecr.aws/k9v9d5v2/policy-enforcement-agent:{{ .Values.policyEnforcementAgent.tag }}"
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /home/pea/conf/application.yaml
+          name: {{ include "policyEnforcementAgent.name" . }}
+          subPath: application.yaml
+        {{- with .Values.policyEnforcementAgent.volumesMounts -}}
+        {{- toYaml . | nindent 6 }}
+        {{- end }}     
+        resources:
+        {{- if .Values.policyEnforcementAgent.resources }}
+          {{- toYaml .Values.policyEnforcementAgent.resources | nindent 10 }}
+        {{- else }}
+          limits:
+            cpu: 500m
+            memory: 500Mi
+          requests:
+            cpu: 50m
+            memory: 50Mi
+        {{- end }}
+        env:
+        {{- include "onboarding.details" . | nindent 8 }}
+      volumes:
+      - configMap:
+          defaultMode: 484
+          name: {{ include "policyEnforcementAgent.name" . }}
+        name: {{ include "policyEnforcementAgent.name" . }}    
+      {{- with .Values.policyEnforcementAgent.volumes -}}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}   
+{{- end }}      

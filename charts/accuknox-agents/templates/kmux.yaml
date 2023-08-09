@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: {{ include "kmux.name" . }} 
+  namespace: {{ .Values.namespace | default "accuknox-agents" }}
+data:
+  config.yaml: |-
+    kmux:
+      sink:
+        stream: knox-gateway
+
+    knox-gateway:
+      server: {{ .Values.knoxGateway | default "knox-gw.accuknox.com:3000" }}

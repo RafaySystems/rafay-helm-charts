@@ -1,0 +1,52 @@
+{{- if eq (include "condition" .) "false" }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:  
+  name: {{ include "sharedInformerAgent.name" . }}
+  namespace: {{ .Values.namespace | default "accuknox-agents" }}
+  labels:
+    app: {{ include "sharedInformerAgent.name" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "sharedInformerAgent.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "sharedInformerAgent.name" . }}
+    spec:
+      serviceAccountName: {{ include "sharedInformerAgent.name" . }}
+      containers:
+      - name: {{ include "sharedInformerAgent.name" . }}   
+        image: "public.ecr.aws/k9v9d5v2/shared-informer-agent:{{ .Values.sharedInformerAgent.tag }}"
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /home/sia/conf/app.yaml
+          name: {{ include "sharedInformerAgent.name" . }}
+          subPath: app.yaml
+        {{- with .Values.sharedInformerAgent.volumesMounts -}}
+        {{- toYaml . | nindent 6 }}
+        {{- end }}   
+        resources:
+        {{- if .Values.agentsOperator.resources }}
+          {{- toYaml .Values.agentsOperator.resources | nindent 10 }}
+        {{- else }}
+          limits:
+            cpu: 500m
+            memory: 500Mi
+          requests:
+            cpu: 50m
+            memory: 50Mi
+        {{- end }}
+        env:
+        {{- include "onboarding.details" . | nindent 8 }}
+      volumes:
+      - configMap:
+          defaultMode: 484
+          name: {{ include "sharedInformerAgent.name" . }}
+        name: {{ include "sharedInformerAgent.name" . }}
+      {{- with .Values.sharedInformerAgent.volumes -}}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}   
+{{- end }}         

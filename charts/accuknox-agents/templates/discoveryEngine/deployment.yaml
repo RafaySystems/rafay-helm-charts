@@ -1,0 +1,51 @@
+{{- if eq (include "condition" .) "false" }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "discoveryEngine.name" . }}
+  namespace: {{ .Values.namespace | default "accuknox-agents" }}
+  labels:
+    app: {{ include "discoveryEngine.name" . }}
+spec:
+  replicas: 
+  selector:
+    matchLabels:
+      app: {{ include "discoveryEngine.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "discoveryEngine.name" . }} 
+    spec:
+      serviceAccountName: {{ include "discoveryEngine.name" . }}
+      containers:
+      - name: discovery-engine
+        image: "accuknox/knoxautopolicy:{{ .Values.discoveryEngine.tag }}"
+        imagePullPolicy: Always
+        env:
+        {{- include "onboarding.details" . | nindent 8 }}
+        resources:
+        {{- if .Values.discoveryEngine.resources }}
+          {{- toYaml .Values.discoveryEngine.resources | nindent 10 }}
+        {{- else }}
+          limits:
+            cpu: 500m
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        {{- end }}
+        volumeMounts:
+        - mountPath: /conf
+          name: {{ include "discoveryEngine.name" . }}
+          readOnly: true
+        {{- with .Values.discoveryEngine.volumesMounts -}}
+        {{- toYaml . | nindent 6 }}
+        {{- end }}    
+      volumes:
+      - configMap:
+          name: {{ include "discoveryEngine.name" . }}
+        name: {{ include "discoveryEngine.name" . }}    
+      {{- with .Values.discoveryEngine.volumes -}}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}    
+{{- end }}      

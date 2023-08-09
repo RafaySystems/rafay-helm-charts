@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "feederService.name" . }}
+  namespace: {{ .Values.namespace | default "accuknox-agents" }}
+  labels:
+    app: {{ include "feederService.name" . }}
+spec:
+  replicas: 
+  selector:
+    matchLabels:
+      app: {{ include "feederService.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "feederService.name" . }}
+    spec:
+      serviceAccountName: {{ include "kmux.name" . }}
+      containers:
+      - name: {{ include "feederService.name" . }}
+        image: "public.ecr.aws/k9v9d5v2/feeder-service:{{ .Values.feederService.tag }}"
+        imagePullPolicy: Always
+        resources:
+        {{- if .Values.feederService.resources }}
+          {{- toYaml .Values.feederService.resources | nindent 10 }}
+        {{- else }}
+          limits:
+            cpu: 500m
+            memory: 500Mi
+          requests:
+            cpu: 50m
+            memory: 50Mi
+        {{- end }}
+        env:
+        - name: KMUX_ENABLED
+          value: "true"
+        {{- include "spire.details" . | nindent 8 }}    
+        {{- include "discoveryEngine.details" . | nindent 8 }}    
+        {{- include "splunk.details" . | nindent 8 }}
+        {{- include "azureSentinel.details" . | nindent 8 }}    
+        {{- include "kubearmor.details" . | nindent 8 }}  
+        {{- include "onboarding.details" . | nindent 8 }}
+        volumeMounts:  
+        {{- with .Values.feederService.volumeMounts -}}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}  
+      volumes:    
+      {{- with .Values.feederService.volumeMounts -}}
+      {{- toYaml . | nindent 8 }}
+      {{- end }}         
