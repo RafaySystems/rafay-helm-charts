@@ -1,0 +1,16 @@
+{{- if eq (include "condition" .) "false" }}
+apiVersion: v1 
+kind: ConfigMap 
+metadata: 
+  name: {{ include "sharedInformerAgent.name" . }}
+  namespace: {{ .Values.namespace | default "accuknox-agents" }}
+data: 
+  app.yaml: |-
+    spire:
+      enable: {{ .Values.agentsOperator.spireVars.SPIRE_ENABLED }}
+      agent: {{ .Values.agentsOperator.spireVars.SPIRE_AGENT_URL }}
+    kmux-topic: shared-event    
+    kmux-topic-prefix: persistent://accuknox/cluster-entity/
+    heartbeat:
+      interval: 5m
+{{- end }}    

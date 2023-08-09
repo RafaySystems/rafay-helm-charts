@@ -1,0 +1,63 @@
+{{- if eq (include "condition" .) "false" }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "agentsOperator.name" . }}
+  namespace: {{ .Values.namespace | default "accuknox-agents" }}
+  labels:
+    app: {{ include "agentsOperator.name" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "agentsOperator.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "agentsOperator.name" . }}
+    spec:
+      serviceAccountName: {{ include "agentsOperator.name" . }}
+      containers:
+      - image: "public.ecr.aws/k9v9d5v2/agents-operator:{{ .Values.agentsOperator.tag }}"
+        imagePullPolicy: Always
+        name: {{ include "agentsOperator.name" . }}   
+        env:
+        - name: join_token
+          value: {{ .Values.joinToken | quote }}
+        - name: spire_address
+          value: {{ .Values.spireHost | default "spire.accuknox.com" | quote }}  
+        - name: spire_port
+          value: "8081"
+        - name: spire_enable
+          value: {{ .Values.spireEnable | default "true" | quote }}
+        {{- include "spire.details" . | nindent 8 }}
+        {{- include "onboarding.details" . | nindent 8 }}
+        resources:
+        {{- if .Values.agentsOperator.resources }}
+          {{- toYaml .Values.agentsOperator.resources | nindent 10 }}
+        {{- else }}
+          limits: 
+            cpu: 500m
+            memory: 500Mi
+          requests:
+            cpu: 50m
+            memory: 50Mi
+        {{- end }}
+        volumeMounts:
+        - mountPath: /conf
+          name: {{ include "agentsOperator.name" . }}
+          readOnly: true
+        - mountPath: /run/spire/agent
+          name: spire-agent  
+        {{- with .Values.agentsOperator.volumeMounts -}}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      volumes:
+      - configMap:
+          name: {{ include "agentsOperator.name" . }}
+        name: {{ include "agentsOperator.name" . }}
+      - emptyDir: {}
+        name: spire-agent  
+      {{- with .Values.agentsOperator.volumes -}}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}  
+{{- end }}

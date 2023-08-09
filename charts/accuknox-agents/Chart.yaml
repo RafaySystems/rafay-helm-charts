@@ -1,0 +1,9 @@
+annotations:
+  category: Security
+apiVersion: v2
+appVersion: v0.1.4
+description: A Helm chart for Accuknox agents
+name: accuknox-agents
+type: application
+version: v0.1.4
+icon: https://accuknox.com/wp-content/uploads/2023/06/web-logo-dark-back-1.png 
