@@ -1,5 +1,19 @@
 apiVersion: v1
 entries:
+  accuknox-agents:
+  - annotations:
+      category: Security
+    apiVersion: v2
+    appVersion: v0.1.4
+    created: "2023-08-09T22:41:12.515896574Z"
+    description: A Helm chart for Accuknox agents
+    digest: 1eca036be239e1a7ed18515648b2cbe3ce4fa35fb7c6e621f952e392b960783e
+    icon: https://accuknox.com/wp-content/uploads/2023/06/web-logo-dark-back-1.png
+    name: accuknox-agents
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/accuknox-agents-v0.1.4/accuknox-agents-v0.1.4.tgz
+    version: v0.1.4
   karpenter:
   - apiVersion: v2
     appVersion: 0.27.0
@@ -391,4 +405,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2023-07-22T01:39:21.235194452Z"
+generated: "2023-08-09T22:41:12.515945774Z"
