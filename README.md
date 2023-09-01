@@ -1,6 +1,6 @@
 # rafay-helm-charts
 
-Helm charts to send Rafay audit logs to SIEM such as splunk, datadog, cloudwatch, elasticsearch etc..
+Helm charts to send Rafay audit logs to SIEM such as splunk, datadog, cloudwatch, elasticsearch etc.
 
 ## Usage
 ```bash
