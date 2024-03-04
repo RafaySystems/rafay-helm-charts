@@ -44,6 +44,9 @@ podAnnotations: {}
 podDisruptionBudget:
   name: karpenter
   maxUnavailable: 1
+# -- SecurityContext for the pod.
+podSecurityContext:
+  fsGroup: 65536
 # -- PriorityClass name for the pod.
 priorityClassName: system-cluster-critical
 # -- Override the default termination grace period for the pod.
@@ -52,7 +55,7 @@ terminationGracePeriodSeconds:
 # This is required when using a custom CNI.
 hostNetwork: false
 # -- Configure the DNS Policy for the pod
-dnsPolicy: Default
+dnsPolicy: ClusterFirst
 # -- Configure DNS Config for the pod
 dnsConfig: {}
 #  options:
@@ -67,8 +70,6 @@ affinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
         - matchExpressions:
-            - key: karpenter.sh/provisioner-name
-              operator: DoesNotExist
             - key: karpenter.sh/nodepool
               operator: DoesNotExist
   podAntiAffinity:
@@ -98,9 +99,9 @@ controller:
     # -- Repository path to the controller image.
     repository: public.ecr.aws/karpenter/controller
     # -- Tag of the controller image.
-    tag: v0.32.1
+    tag: 0.35.0
     # -- SHA256 digest of the controller image.
-    digest: sha256:9b31039d45613ac22a104b8d48eca9dcdeff93e525bd473c811dfd3502e58c69
+    digest: sha256:48d1246f6b2066404e300cbf3e26d0bcdc57a76531dcb634d571f4f0e050cb57
   # -- Additional environment variables for the controller pod.
   env: []
   # - name: AWS_REGION
@@ -136,18 +137,18 @@ controller:
     port: 8081
 webhook:
   # -- Whether to enable the webhooks and webhook permissions.
-  enabled: true
+  enabled: false
   # -- The container port to use for the webhook.
   port: 8443
   metrics:
     # -- The container port to use for webhook metrics.
     port: 8001
-# -- Global log level
-logLevel: debug
+# -- Global log level, defaults to 'info'
+logLevel: info
 # -- Log configuration (Deprecated: Logging configuration will be dropped by v1, use logLevel instead)
 logConfig:
   # -- Whether to enable provisioning and mounting the log ConfigMap
-  enabled: true
+  enabled: false
   # -- Log outputPaths - defaults to stdout only
   outputPaths:
     - stdout
@@ -158,16 +159,14 @@ logConfig:
   logEncoding: json
   # -- Component-based log configuration
   logLevel:
-    # -- Global log level, defaults to 'debug'
-    global: debug
-    # -- Controller log level, defaults to 'debug'
-    controller: debug
+    # -- Global log level, defaults to 'info'
+    global: info
+    # -- Controller log level, defaults to 'info'
+    controller: info
     # -- Error log level, defaults to 'error'
     webhook: error
 # -- Global Settings to configure Karpenter
 settings:
-  # -- AWS-specific settings (Deprecated: The AWS block inside of settings was flattened into settings)
-  aws: {}
   # -- The maximum length of a batch window. The longer this is, the more pods we can consider for provisioning at one
   # time which usually results in fewer but larger nodes.
   batchMaxDuration: 10s
@@ -177,7 +176,7 @@ settings:
   batchIdleDuration: 1s
   # -- Role to assume for calling AWS services.
   assumeRoleARN: ""
-  # -- Duration of assumed credentials in minutes. Default value is 15 minutes. Not used unless aws.assumeRoleARN set.
+  # -- Duration of assumed credentials in minutes. Default value is 15 minutes. Not used unless assumeRoleARN set.
   assumeRoleDuration: 15m
   # -- Cluster CA bundle for TLS configuration of provisioned nodes. If not set, this is taken from the controller's TLS configuration for the API server.
   clusterCABundle: ""
@@ -199,7 +198,10 @@ settings:
   # -- Feature Gate configuration values. Feature Gates will follow the same graduation process and requirements as feature gates
   # in Kubernetes. More information here https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/#feature-gates-for-alpha-or-beta-features
   featureGates:
-    # -- drift is in ALPHA and is disabled by default.
-    # Setting drift to true enables the drift disruption method to watch for drift between currently deployed nodes
-    # and the desired state of nodes set in provisioners and node templates
-    drift: false
+    # -- drift is in BETA and is enabled by default.
+    # Setting drift to false disables the drift disruption method to watch for drift between currently deployed nodes
+    # and the desired state of nodes set in nodepools and nodeclasses
+    drift: true
+    # -- spotToSpotConsolidation is disabled by default.
+    # Setting this to true will enable spot replacement consolidation for both single and multi-node consolidation.
+    spotToSpotConsolidation: false
