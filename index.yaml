@@ -35,6 +35,45 @@ entries:
           description: NodePool is the Schema for the NodePools API.
     apiVersion: v2
     appVersion: 1.1.1
+    created: "2024-12-26T19:00:49.94281275Z"
+    description: A Helm chart for Karpenter, an open-source node provisioning project
+      built for Kubernetes.
+    digest: 40b830c93c9ce328a27cdce7cc763a0a4946906c0e2cea4e86d89e6ebf865ae9
+    home: https://karpenter.sh/
+    icon: https://repository-images.githubusercontent.com/278480393/dab059c8-caa1-4b55-aaa7-3d30e47a5616
+    keywords:
+    - cluster
+    - node
+    - scheduler
+    - autoscaling
+    - lifecycle
+    name: karpenter
+    sources:
+    - https://github.com/aws/karpenter-provider-aws/
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/karpenter-1.1.2/karpenter-1.1.2.tgz
+    version: 1.1.2
+  - annotations:
+      artifacthub.io/alternativeName: karpenter-provider-aws
+      artifacthub.io/crds: |
+        - kind: EC2NodeClass
+          version: v1beta1
+          name: ec2nodeclasses.karpenter.k8s.aws
+          displayName: EC2NodeClass
+          description: EC2NodeClass is the Schema for the EC2NodeClass API.
+        - kind: NodeClaim
+          version: v1beta1
+          name: nodeclaims.karpenter.sh
+          displayName: NodeClaim
+          description: NodeClaim is the Schema for the NodeClaims API.
+        - kind: NodePool
+          version: v1beta1
+          name: nodepools.karpenter.sh
+          displayName: NodePool
+          description: NodePool is the Schema for the NodePools API.
+    apiVersion: v2
+    appVersion: 1.1.1
     created: "2024-12-26T18:35:44.168318761Z"
     description: A Helm chart for Karpenter, an open-source node provisioning project
       built for Kubernetes.
@@ -834,4 +873,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2024-12-26T18:35:44.168467231Z"
+generated: "2024-12-26T19:00:49.942969201Z"
