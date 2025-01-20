@@ -15,12 +15,12 @@ metadata:
 ---
 apiVersion: v1
 data:
-  allowInsecureBootstrap: {{ if .Values.allow_insecure_bootstrap }} {{ else }}  "" {{ end }}
-  bootstrapCA: {{ if .Values.bootstrap_ca }} {{ else }}  "" {{ end }}
-  httpProxy: {{ if .Values.http_proxy }} {{ else }}  "" {{ end }}
-  httpsProxy: {{ if .Values.https_proxy }} {{ else }}  "" {{ end }}
-  noProxy: {{ if .Values.no_proxy }} {{ else }}  "" {{ end }}
-  proxyAuth: {{ if .Values.proxy_auth }} {{ else }}  "" {{ end }}
+  allowInsecureBootstrap: {{ if .Values.allow_insecure_bootstrap }} "{{ .Values.allow_insecure_bootstrap }}" {{ else }}  "" {{ end }}
+  bootstrapCA: {{ if .Values.bootstrap_ca }} "{{ .Values.bootstrap_ca }}" {{ else }}  "" {{ end }}
+  httpProxy: {{ if .Values.http_proxy }} "{{ .Values.http_proxy }}" {{ else }}  "" {{ end }}
+  httpsProxy: {{ if .Values.https_proxy }} "{{ .Values.https_proxy }}" {{ else }}  "" {{ end }}
+  noProxy: {{ if .Values.no_proxy }} "{{ .Values.no_proxy }}" {{ else }}  "" {{ end }}
+  proxyAuth: {{ if .Values.proxy_auth }} "{{ .Values.proxy_auth }}" {{ else }}  "" {{ end }}
 kind: ConfigMap
 metadata:
   annotations:
