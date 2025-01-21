@@ -15,11 +15,11 @@ helm search repo rafay-helm-charts
 
 export BOOTSTRAP_FILE=<location of the downloaded bootstrap file>
 
-TOKEN=`cat $BOOTSTRAP_FILE |yq '.data.token | select(document_index == 18)'`
-API_ADDR=`cat $BOOTSTRAP_FILE |yq '.data.apiAddr | select(document_index == 18)'`
-CONTROL_ADDR=`cat $BOOTSTRAP_FILE |yq '.data.controlAddr| select(document_index == 18)'`
-CLUSTER_ID=`cat $BOOTSTRAP_FILE |yq '.data.clusterID| select(document_index == 13)'`
-RELAYS=`cat $BOOTSTRAP_FILE |yq '.data.relays| select(document_index == 13)'| sed 's/,/\\\\,/g'`
+TOKEN=`cat $BOOTSTRAP_FILE |yq '.data.token | select(document_index == 19)'`
+API_ADDR=`cat $BOOTSTRAP_FILE |yq '.data.apiAddr | select(document_index == 19)'`
+CONTROL_ADDR=`cat $BOOTSTRAP_FILE |yq '.data.controlAddr| select(document_index == 19)'`
+CLUSTER_ID=`cat $BOOTSTRAP_FILE |yq '.data.clusterID| select(document_index == 14)'`
+RELAYS=`cat $BOOTSTRAP_FILE |yq '.data.relays| select(document_index == 14)'| sed 's/,/\\\\,/g'`
 
 helm install v2-infra  rafay-helm-charts/v2-infra --set token=$TOKEN --set api_addr=$API_ADDR --set control_addr=$CONTROL_ADDR --set cluster_id=$CLUSTER_ID --set relays=$RELAYS -n rafay-system --create-namespace
 
