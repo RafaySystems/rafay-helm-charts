@@ -816,6 +816,21 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-sumologic-1.0/rafay-sumologic-1.0.tgz
     version: "1.0"
+  rafay-syslog:
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "1.0"
+    created: "2025-09-26T15:31:58.046049027Z"
+    description: Aggregate and stream your organization's audit logs to syslog
+    digest: 34ff525b31d5feaa2d32262a12d2cb666f12da336a5b07f9c24a745b879a4004
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-syslog
+    icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
+    name: rafay-syslog
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-syslog-1.0/rafay-syslog-1.0.tgz
+    version: "1.0"
   v2-infra:
   - annotations:
       category: ClusterManagement
@@ -887,4 +902,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2025-01-21T07:09:02.76688885Z"
+generated: "2025-09-26T15:31:58.046140948Z"
