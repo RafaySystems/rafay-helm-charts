@@ -29,7 +29,7 @@ image:
   repository: registry.rafay-edge.net/rafay-logs/rafay-splunk
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.3.4
+  tag: 0.3.10
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
