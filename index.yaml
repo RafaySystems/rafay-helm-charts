@@ -724,6 +724,20 @@ entries:
   - annotations:
       category: LogManagement
     apiVersion: v2
+    appVersion: "4.0"
+    created: "2025-11-25T00:00:12.92917537Z"
+    description: Aggregate and stream your organization's audit logs to Splunk
+    digest: 2d24fa012c7431bdf584c619deaed534d47b974dbfaed6b8c44a73615bbf4b49
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-splunk
+    icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
+    name: rafay-splunk
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-splunk-4.0/rafay-splunk-4.0.tgz
+    version: "4.0"
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
     appVersion: "3.0"
     created: "2025-11-21T18:48:45.603649853Z"
     description: Aggregate and stream your organization's audit logs to Splunk
@@ -916,4 +930,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2025-11-21T18:48:45.603779355Z"
+generated: "2025-11-25T00:00:12.929304621Z"
