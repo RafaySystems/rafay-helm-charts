@@ -28,11 +28,19 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ .Release.Name }}-serviceaccount
+      serviceAccountName: {{ include "rafay-syslog.serviceAccountName" . }}
+      {{- with .Values.podSecurityContext }}
+      podSecurityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- with .Values.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           env:
           - name: RELEASE
             value: {{ .Release.Name }}
@@ -49,6 +57,7 @@ spec:
                 name: {{ .Release.Name }}-secret
             {{- end }}
                 key: rafaykey
+                optional: true
           - name: RAFAY_API_SECRET
             valueFrom:
               secretKeyRef:
@@ -58,8 +67,30 @@ spec:
                 name: {{ .Release.Name }}-secret
             {{- end }}
                 key: rafaysecret
+                optional: true
+          {{- if or .Values.config.partner_api_key .Values.config.partner_api_key_from_secret }}
+          - name: PARTNER_API_KEY
+            valueFrom:
+              secretKeyRef:
+            {{- if .Values.config.secret_name }}
+                name: {{ .Values.config.secret_name }}
+            {{- else }}
+                name: {{ .Release.Name }}-secret
+            {{- end }}
+                key: partnerkey
+          {{- end }}
+          {{- with .Values.resources }}
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.readinessProbe }}
+          readinessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           volumeMounts:
           - name: syslog-config
             mountPath: /config

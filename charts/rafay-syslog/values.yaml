@@ -3,12 +3,20 @@
 # Declare variables to be passed into your templates.
 
 config:
-  ## Rafay console URL
+  ## Rafay console URL (event/audit APIs)
   url: https://console.rafay.dev
-  ## Rafay API Key
-  rafay_api_key: RAFAY_API_KEY
-  ## Rafay API Secret
-  rafay_api_secret: RAFAY_API_SECRET
+  ## Ops console base URL for partner org listing (GET /v1/auth/organizations/). Defaults to url if empty.
+  ops_console_url: ""
+  ## Rafay API Key — required in single-tenant mode; optional when partner_api_key is set
+  rafay_api_key: ""
+  ## Rafay API Secret — accepted for backward compatibility; not used by the script
+  rafay_api_secret: ""
+  ## Partner API key (optional). When set (or partner_api_key_from_secret: true), lists organizations
+  ## via GET /v1/auth/organizations/ and ships auditlog / relayaudit / relaycommands per org with
+  ## X-ORGANIZATION-ID and syslog APP-NAME = org name.
+  partner_api_key: ""
+  ## If true, load PARTNER_API_KEY from the same secret (key partnerkey) without embedding the key in this chart.
+  partner_api_key_from_secret: false
   ## Send Initial logs to syslog based on following value. Defaults to "14d" days
   filter: 14d
   ## Time Interval to send logs to syslog
@@ -17,42 +25,49 @@ config:
   host: syslogserver.mycompany.com
   ## syslog Server Port
   port: 514
-  ## Set to False for insecure connection to controller
+  ## Set to False to skip TLS certificate verification on Rafay Console API calls
   ssl_verify: True
-  ## Existning Secret Name or leave it empty
+  ## Existing Secret Name or leave it empty
   secret_name: ""
 image:
   repository: registry.rafay-edge.net/rafay-logs/rafay-syslog
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 1.0
+  tag: 1.1
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
+  # If not set and create is true, defaults to <Release.Name>-serviceaccount
   name:
 rbac:
-  create: true	
+  create: true
 replicaCount: 1
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 deploymentAnnotations: {}
 podAnnotations: {}
+# Pod resources (leave empty {} to omit limits/requests)
 resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+# Liveness probe — lightweight exec; tune if the pod restarts too often
+livenessProbe:
+  exec:
+    command:
+      - /bin/sh
+      - -c
+      - "exit 0"
+  initialDelaySeconds: 90
+  periodSeconds: 120
+  timeoutSeconds: 5
+  failureThreshold: 3
+readinessProbe: {}
+# Optional pod-level security context (omit keys to skip)
+podSecurityContext: {}
+# Optional container security context
+securityContext: {}
 nodeSelector: {}
 tolerations: []
 affinity: {}
