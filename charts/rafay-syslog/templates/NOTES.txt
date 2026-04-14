@@ -1,0 +1,13 @@
+1. Verify the pod is running:
+   kubectl get pods -l app.kubernetes.io/instance={{ .Release.Name }} -n {{ .Release.Namespace }}
+
+2. Confirm Rafay API credentials:
+   - If using the chart-managed Secret, replace placeholder values in values.yaml (rafay_api_key / rafay_api_secret) before install, or set config.secret_name to an existing Secret with keys rafaykey and rafaysecret.
+
+3. Check ConfigMap timestamps (after the job has run):
+   kubectl get configmap {{ .Release.Name }}-auditlogs-ts-configmap -n {{ .Release.Namespace }} -o yaml
+
+4. If rbac.create is false, ensure the ServiceAccount used by this release has get/update on ConfigMaps in this namespace.
+
+5. View application logs:
+   kubectl logs -l app.kubernetes.io/instance={{ .Release.Name }} -n {{ .Release.Namespace }} -f

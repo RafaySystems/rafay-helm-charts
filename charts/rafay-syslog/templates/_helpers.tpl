@@ -51,11 +51,11 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
-Create the name of the service account to use
+Create the name of the service account to use (must match ServiceAccount metadata.name)
 */}}
 {{- define "rafay-syslog.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "rafay-syslog.fullname" .) .Values.serviceAccount.name }}
+{{- default (printf "%s-serviceaccount" .Release.Name) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
