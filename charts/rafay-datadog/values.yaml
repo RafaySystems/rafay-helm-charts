@@ -32,7 +32,7 @@ image:
   repository: registry.rafay-edge.net/rafay-logs/rafay-datadog
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.2.4
+  tag: 3.0
 
 serviceAccount:
   # Specifies whether a service account should be created
