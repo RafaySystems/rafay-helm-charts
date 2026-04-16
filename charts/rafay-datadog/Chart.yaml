@@ -1,10 +1,10 @@
 annotations:
   category: LogManagement
 apiVersion: v2
-appVersion: "2.0"
+appVersion: "3.0"
 description: Aggregate and stream your organization's audit logs to DataDog
 name: rafay-datadog
 type: application
-version: "2.4"
+version: "3.0"
 home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-datadog
 icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
