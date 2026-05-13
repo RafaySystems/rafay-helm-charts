@@ -8,9 +8,11 @@ data:
   config.ini: |-
     [rafay]
     url = {{ .Values.config.url }}
+    ops_console_url = {{ .Values.config.ops_console_url | default .Values.config.url }}
     filter = {{ .Values.config.filter }}
     interval = {{ .Values.config.interval }}
-    
+    ssl_verify = {{ .Values.config.rafay_ssl_verify }}
+
     [Splunk]
     host = {{ .Values.config.host }}
     port = {{ .Values.config.port }}
