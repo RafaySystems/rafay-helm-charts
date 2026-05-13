@@ -1,0 +1,63 @@
+# Default values for rafay elasticsearch audit log integration.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+config:
+  ## Rafay console URL
+  url: https://console.rafay.dev
+  ## Rafay API Key
+  rafay_api_key: RAFAY_API_KEY
+  ## Send Initial logs to elasticsearch adog based on following value. Defaults to "14d" days
+  filter: 14d
+  ## Time Interval to send logs to elasticsearch
+  interval: 1m
+  ## elasticsearch Server Host
+  host: https://elasticsearc.mycompany.com:9200
+  ### Either configure API KEY or USERNAME/PASSWORD
+  ## elasticsearch API KEY
+  es_api_key: elasticsearch_TOKEN
+  ## elasticsearch Username
+  es_username: ""
+  ## elasticsearch Password
+  es_password: ""
+  ## Set to False for insecure elasticsearch server
+  ssl_verify: True
+  ## Index name to store audit logs to
+  index: k8s-cluster-audit
+  ## Existning Secret Name or leave it empty
+  secret_name: ""
+image:
+  repository: registry.rafay-edge.net/rafay-logs/rafay-elasticsearch
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: 1.0
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+rbac:
+  create: true	
+replicaCount: 1
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+deploymentAnnotations: {}
+podAnnotations: {}
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+nodeSelector: {}
+tolerations: []
+affinity: {}
