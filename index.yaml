@@ -662,6 +662,21 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-datadog-0.2.0/rafay-datadog-0.2.0.tgz
     version: 0.2.0
+  rafay-elasticsearch:
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "1.0"
+    created: "2026-05-13T18:55:31.939074889Z"
+    description: Aggregate and stream your organization's audit logs to elasticsearch
+    digest: 342d0919fb6f3ee21abab6c6d948f4ceb86531dbcf54707a1c71e5e72852b041
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-elasticsearch
+    icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
+    name: rafay-elasticsearch
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-elasticsearch-1.0/rafay-elasticsearch-1.0.tgz
+    version: "1.0"
   rafay-operator-redhat:
   - annotations:
       charts.openshift.io/name: rafay-operator-redhat
@@ -958,4 +973,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2026-05-13T15:48:46.35287777Z"
+generated: "2026-05-13T18:55:31.93916346Z"
