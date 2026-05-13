@@ -876,6 +876,20 @@ entries:
   - annotations:
       category: LogManagement
     apiVersion: v2
+    appVersion: "2.0"
+    created: "2026-05-13T23:31:34.072358848Z"
+    description: Aggregate and stream your organization's audit logs to Sumologic
+    digest: 5f4ef7f1bd935b144176f3b6ec6fc9056d1a4e9e916df822726750f2805e722b
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-sumologic
+    icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
+    name: rafay-sumologic
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-sumologic-2.0/rafay-sumologic-2.0.tgz
+    version: "2.0"
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
     appVersion: "1.0"
     created: "2023-06-27T18:15:19.334217632Z"
     description: Aggregate and stream your organization's audit logs to sumologic
@@ -987,4 +1001,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2026-05-13T22:34:59.905503262Z"
+generated: "2026-05-13T23:31:34.072435372Z"
