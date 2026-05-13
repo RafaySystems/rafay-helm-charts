@@ -3,28 +3,36 @@
 # Declare variables to be passed into your templates.
 
 config:
-  ## Rafay console URL
+  ## Rafay console URL (event/audit APIs)
   url: https://console.rafay.dev
-  ## Rafay API Key
-  rafay_api_key: RAFAY_API_KEY
-  ## Rafay API Secret
-  rafay_api_secret: RAFAY_API_SECRET
-  ## Send Initial logs to sumologic adog based on following value. Defaults to "14d" days
+  ## Ops console base URL for partner org listing (GET /v1/auth/organizations/). Defaults to url if empty.
+  ops_console_url: ""
+  ## Rafay API Key — required in single-tenant mode; optional when partner_api_key is set
+  rafay_api_key: ""
+  ## Rafay API Secret — optional; accepted for backward compatibility
+  rafay_api_secret: ""
+  ## Partner API key (optional). When set, lists organizations via GET /v1/auth/organizations/
+  ## and ships auditlog / relayaudit / relaycommands per org with X-ORGANIZATION-ID.
+  partner_api_key: ""
+  ## If true, load PARTNER_API_KEY from the same secret (key partnerkey) without embedding the key in this chart.
+  partner_api_key_from_secret: false
+  ## Send Initial logs based on following value. Default to "14d" days
   filter: 14d
-  ## Time Interval to send logs to sumologic
+  ## Time Interval to send logs
   interval: 1m
-  ## sumologic endpoint (Without "/" & https)
-  endpoint: endpoint.collection.sumologic.com
-  ## sumologic UniqueHTTPCollectorCode
+  ## Set to False to skip TLS certificate verification on Rafay Console API calls
+  ssl_verify: True
+  ## Sumologic endpoint (without "/" and "https://")
+  endpoint: sumologicserver.mycompany.com
+  ## Sumologic UniqueHTTPCollectorCode (token)
   sumologic_token: SUMOLOGIC_TOKEN
-  ## Set to source name of ddddthe collector
   ## Existing Secret Name or leave it empty
   secret_name: ""
 image:
   repository: registry.rafay-edge.net/rafay-logs/rafay-sumologic
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 1.0.0
+  tag: 2.0.0
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -34,7 +42,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name:
 rbac:
-  create: true	
+  create: true
 replicaCount: 1
 imagePullSecrets: []
 nameOverride: ""
