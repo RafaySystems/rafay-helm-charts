@@ -571,6 +571,20 @@ entries:
   - annotations:
       category: LogManagement
     apiVersion: v2
+    appVersion: "3.0"
+    created: "2026-05-13T15:48:46.352761492Z"
+    description: Aggregate and stream your organization's audit logs to DataDog
+    digest: c2fda1a346deea0b9c634d89b076eb5faa9dcbca7bb6507d2af51da3b068bf56
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-datadog
+    icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
+    name: rafay-datadog
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-datadog-3.0/rafay-datadog-3.0.tgz
+    version: "3.0"
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
     appVersion: "2.0"
     created: "2023-06-12T19:08:43.470220712Z"
     description: Aggregate and stream your organization's audit logs to DataDog
@@ -944,4 +958,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2026-04-14T05:07:09.559436371Z"
+generated: "2026-05-13T15:48:46.35287777Z"
