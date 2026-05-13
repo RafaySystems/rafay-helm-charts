@@ -30,7 +30,7 @@ spec:
     {{- end }}
       serviceAccountName: {{ .Release.Name }}-serviceaccount
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ .Release.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
@@ -49,6 +49,7 @@ spec:
                 name: {{ .Release.Name }}-secret
             {{- end }}
                 key: rafaykey
+                optional: true
           - name: RAFAY_API_SECRET
             valueFrom:
               secretKeyRef:
@@ -58,6 +59,7 @@ spec:
                 name: {{ .Release.Name }}-secret
             {{- end }}
                 key: rafaysecret
+                optional: true
           - name: SPLUNK_TOKEN
             valueFrom:
               secretKeyRef:
@@ -67,8 +69,21 @@ spec:
                 name: {{ .Release.Name }}-secret
             {{- end }}
                 key: token
+          {{- if or .Values.config.partner_api_key .Values.config.partner_api_key_from_secret }}
+          - name: PARTNER_API_KEY
+            valueFrom:
+              secretKeyRef:
+            {{- if .Values.config.secret_name }}
+                name: {{ .Values.config.secret_name }}
+            {{- else }}
+                name: {{ .Release.Name }}-secret
+            {{- end }}
+                key: partnerkey
+          {{- end }}
+          {{- with .Values.resources }}
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           volumeMounts:
           - name: splunk-config
             mountPath: /config
@@ -78,10 +93,12 @@ spec:
             mountPath: /kubectl
           - name: kubectllogs-cli-config
             mountPath: /kubectlcli
-          - name: opalogs-config 
+          - name: opalogs-config
             mountPath: /opa
-          - name: admissionlogs-config 
+          - name: admissionlogs-config
             mountPath: /admission
+          - name: state-dir
+            mountPath: /state
       volumes:
         - name: splunk-config
           configMap:
@@ -101,6 +118,8 @@ spec:
         - name: admissionlogs-config
           configMap:
             name: {{ .Release.Name }}-admissionlogs-ts-configmap
+        - name: state-dir
+          emptyDir: {}
       restartPolicy: Always
       {{- with .Values.nodeSelector }}
       nodeSelector:
