@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+  labels:
+    {{- include "rafay-azure-sentinel.labels" . | nindent 4 }}
+data:
+  config.ini: |-
+    [rafay]
+    url = {{ .Values.config.url }}
+    filter = {{ .Values.config.filter }}
+    interval = {{ .Values.config.interval }}
+    ssl_verify = {{ .Values.config.ssl_verify }}
+
+    [azure]
+    dce_endpoint = {{ .Values.config.dce_endpoint }}
+    audit_dcr_immutable_id = {{ .Values.config.audit_dcr_immutable_id }}
+    audit_stream_name = {{ .Values.config.audit_stream_name }}
+    send_relay_api_logs = {{ .Values.config.send_relay_api_logs }}
+    {{- if .Values.config.send_relay_api_logs }}
+    relay_dcr_immutable_id = {{ .Values.config.relay_dcr_immutable_id }}
+    relay_stream_name = {{ .Values.config.relay_stream_name }}
+    {{- end }}
