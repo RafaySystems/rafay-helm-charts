@@ -1,0 +1,80 @@
+# Default values for rafay azure-sentinel audit log integration.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+config:
+  ## Rafay console URL (event/audit APIs)
+  url: https://console.rafay.dev
+  ## Rafay API Key
+  rafay_api_key: ""
+  ## Rafay API Secret — optional; accepted for backward compatibility, not used by the script
+  rafay_api_secret: ""
+  ## Send initial logs based on following value. Default to "14d" days
+  filter: 14d
+  ## Time interval to send logs to Azure Sentinel
+  interval: 1m
+  ## Set to False to skip TLS certificate verification on Rafay Console API calls
+  ssl_verify: True
+  ## Azure Monitor Data Collection Endpoint (DCE) ingestion URL. Shared by both
+  ## streams below — a DCE just hosts ingestion, the DCR/stream picks the table.
+  dce_endpoint: https://<dce-name>.<region>.ingest.monitor.azure.com
+  ## auditlog + relaycommands (shared audit-event schema)
+  audit_dcr_immutable_id: dcr-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  audit_stream_name: Custom-RafayAuditLogs
+  ## Set to False to skip polling/shipping relayaudit (RelayAPI, kubectl API access
+  ## logs) entirely — only auditlog + relaycommands are sent, to the single audit
+  ## stream above. Use this if you don't want to stand up a second table/DCR.
+  send_relay_api_logs: true
+  ## relayaudit / RelayAPI only — a distinct kubectl API access-log schema.
+  ## Needs its own table/DCR transform; do not point
+  ## this at the same table as above. Ignored (and not required) when
+  ## send_relay_api_logs is false.
+  relay_dcr_immutable_id: dcr-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  relay_stream_name: Custom-RafayKubectlAPILogs
+  ## Azure AD (Entra ID) tenant ID for the app registration used to authenticate to the Logs Ingestion API
+  azure_tenant_id: ""
+  ## Azure AD app registration (service principal) client ID. Must be granted the
+  ## "Monitoring Metrics Publisher" role on the DCR.
+  azure_client_id: ""
+  ## Azure AD app registration client secret (set via secret; leave empty here)
+  azure_client_secret: ""
+  ## Existing Secret name — if set, the chart will NOT create its own Secret and will
+  ## reference this Secret for all credentials (rafaykey, rafaysecret, azuretenantid, azureclientid, azureclientsecret).
+  secret_name: ""
+
+image:
+  repository: registry.rafay-edge.net/rafay-logs/rafay-azure-sentinel
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "1.0"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+rbac:
+  create: true
+replicaCount: 1
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+deploymentAnnotations: {}
+podAnnotations: {}
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+nodeSelector: {}
+tolerations: []
+affinity: {}
