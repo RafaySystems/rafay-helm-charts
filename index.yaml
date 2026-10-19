@@ -510,6 +510,21 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/karpenter-v0.23.0/karpenter-v0.23.0.tgz
     version: v0.23.0
+  rafay-azure-sentinel:
+  - annotations:
+      category: LogManagement
+    apiVersion: v2
+    appVersion: "1.0"
+    created: "2026-10-19T15:52:12.04961406Z"
+    description: Aggregate and stream your organization's audit logs to Azure Sentinel
+    digest: 52903dc2540ace6496abc6692f87d8b91d31bd27dffc885b8d11652b63b80d38
+    home: https://github.com/RafaySystems/rafay-helm-charts/tree/main/charts/rafay-azure-sentinel
+    icon: https://rafay-partner-logos.s3.us-west-1.amazonaws.com/rafay-charts-logo.png
+    name: rafay-azure-sentinel
+    type: application
+    urls:
+    - https://github.com/RafaySystems/rafay-helm-charts/releases/download/rafay-azure-sentinel-1.0/rafay-azure-sentinel-1.0.tgz
+    version: "1.0"
   rafay-cloudwatch:
   - annotations:
       category: LogManagement
@@ -1001,4 +1016,4 @@ entries:
     urls:
     - https://github.com/RafaySystems/rafay-helm-charts/releases/download/v2-infra-1/v2-infra-1.tgz
     version: "1"
-generated: "2026-05-13T23:31:34.072435372Z"
+generated: "2026-10-19T15:52:12.04972607Z"
